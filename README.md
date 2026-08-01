@@ -1,16 +1,16 @@
 # TORRO BURGER
 
-Сайт бургерной TORRO BURGER: видео-заставка, hero «CHERRY BURGER», меню из 76 позиций
-с настоящими фотографиями блюд, корзина и адреса филиалов.
+Burger shop site: video intro, a "CHERRY BURGER" hero, a 76-item menu with real
+dish photography, a cart, and the locations block.
 
-**Живой сайт:** https://cherry-crav.vercel.app
+**Live site:** https://cherry-crav.vercel.app
 
-Репозиторий self-contained: код, все фотографии, шрифты и данные меню уже внутри.
-Никаких API-ключей и внешних файлов не нужно.
+The repo is self-contained — code, every photo, the fonts and the menu data are
+all in here. No API keys, no files to get from anywhere else.
 
-## Запуск
+## Run it
 
-Нужен только `git` и `python3` (он есть на macOS и Linux из коробки):
+You only need `git` and `python3` (which ships with macOS and Linux):
 
 ```bash
 git clone https://github.com/p4sh6ysbfn-svg/torro-burger.git
@@ -18,49 +18,50 @@ cd torro-burger
 python3 -m http.server 5173
 ```
 
-Откроется на http://localhost:5173
+Opens at http://localhost:5173
 
-Сборка не нужна — это чистые HTML + CSS + JS. Подойдёт любой другой статический
-сервер (`npx serve`, `php -S localhost:5173`, Live Server в VS Code).
-Только не открывайте `index.html` через `file://` — сломаются абсолютные ссылки
-вида `/menu/` и не будет работать корзина.
+No build step — it's plain HTML + CSS + JS. Any other static server works too
+(`npx serve`, `php -S localhost:5173`, VS Code Live Server). Just don't open
+`index.html` over `file://`: absolute links like `/menu/` break and the cart
+stops persisting.
 
-## Страницы
+## Pages
 
-| Путь | Что там |
+| Route | What's there |
 |---|---|
-| `/` | Главная: заставка → hero → меню (76 позиций) → адреса → футер |
-| `/menu/` | Карточки шести хитов с фото и кнопкой «в корзину» |
-| `/contact/` | Форма обратной связи и адреса |
-| `/spices/` | Ингредиенты |
+| `/` | Landing: intro video → hero → menu (76 items) → locations → footer |
+| `/menu/` | Cards for six signature burgers with add-to-cart |
+| `/contact/` | Contact form and addresses |
+| `/spices/` | Ingredients |
 
-## Структура
+## Layout
 
 ```
-index.html            главная
-menu/ contact/ spices/  внутренние страницы
+index.html              landing
+menu/ contact/ spices/  inner pages
 assets/
-  css/style.css       вся вёрстка и анимации
-  js/cart.js          корзина (localStorage, ключ torro_cart)
-  js/main.js          прелоадер, курсор, reveal-анимации, шторка переходов
-  js/lenis.min.js     инерционный скролл
-  fonts/              Modak + Mouse Memoirs (latin, latin-ext)
-  img/                декор и hero
-  img/menu/           76 фотографий блюд
-  video/loader.mp4    заставка
+  css/style.css         all layout and animation
+  js/cart.js            cart (localStorage, key: torro_cart)
+  js/main.js            preloader, cursor, reveal animations, page transitions
+  js/lenis.min.js       smooth scrolling
+  fonts/                Modak + Mouse Memoirs (latin, latin-ext)
+  img/                  decor and hero
+  img/menu/             76 dish photos
+  video/loader.mp4      intro video
 ```
 
-## Пересобрать сайт с нуля
+## Rebuild it from scratch
 
-В [`PROMPT.md`](PROMPT.md) лежит единый промпт: его можно целиком вставить
-в Claude Code / Cursor, и сайт соберётся заново — со скачиванием всех ассетов
-и полным исходным кодом. Там же спецификация дизайна, чек-лист проверки
-и инструкция по деплою.
+[`PROMPT.md`](PROMPT.md) is a single self-contained prompt (written in Russian):
+paste the whole thing into Claude Code or Cursor and the site gets rebuilt from
+nothing — it downloads every asset and contains the full source. It also carries
+the design spec, a verification checklist and deployment notes.
 
-## Деплой
+## Deploy
 
 ```bash
 npx vercel deploy --prod --yes
 ```
 
-Или Netlify / GitHub Pages / Cloudflare Pages — сборка не требуется.
+Netlify, GitHub Pages and Cloudflare Pages work the same way — there is nothing
+to build.
