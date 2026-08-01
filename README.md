@@ -1,42 +1,61 @@
 # TORRO BURGER
 
-Статический сайт бургерной TORRO BURGER: видео-заставка, hero «CHERRY BURGER»,
-меню из 76 позиций с фотографиями, корзина и адреса филиалов.
+Сайт бургерной TORRO BURGER: видео-заставка, hero «CHERRY BURGER», меню из 76 позиций
+с настоящими фотографиями блюд, корзина и адреса филиалов.
 
 **Живой сайт:** https://cherry-crav.vercel.app
 
-## Стек
+Репозиторий self-contained: код, все фотографии, шрифты и данные меню уже внутри.
+Никаких API-ключей и внешних файлов не нужно.
 
-Чистые HTML + CSS + JS, без сборки и без зависимостей.
-Единственная библиотека — [Lenis](https://github.com/darkroomengineering/lenis)
-для инерционного скролла (лежит файлом в `assets/js/`).
+## Запуск
+
+Нужен только `git` и `python3` (он есть на macOS и Linux из коробки):
+
+```bash
+git clone https://github.com/ВАШ_ЛОГИН/torro-burger.git
+cd torro-burger
+python3 -m http.server 5173
+```
+
+Откроется на http://localhost:5173
+
+Сборка не нужна — это чистые HTML + CSS + JS. Подойдёт любой другой статический
+сервер (`npx serve`, `php -S localhost:5173`, Live Server в VS Code).
+Только не открывайте `index.html` через `file://` — сломаются абсолютные ссылки
+вида `/menu/` и не будет работать корзина.
+
+## Страницы
+
+| Путь | Что там |
+|---|---|
+| `/` | Главная: заставка → hero → меню (76 позиций) → адреса → футер |
+| `/menu/` | Карточки шести хитов с фото и кнопкой «в корзину» |
+| `/contact/` | Форма обратной связи и адреса |
+| `/spices/` | Ингредиенты |
 
 ## Структура
 
 ```
-index.html            главная: hero → меню → адреса → футер
-menu/index.html       страница бургеров с карточками
-contact/index.html    форма и адреса
-spices/index.html     ингредиенты
+index.html            главная
+menu/ contact/ spices/  внутренние страницы
 assets/
   css/style.css       вся вёрстка и анимации
   js/cart.js          корзина (localStorage, ключ torro_cart)
   js/main.js          прелоадер, курсор, reveal-анимации, шторка переходов
-  js/lenis.min.js
+  js/lenis.min.js     инерционный скролл
   fonts/              Modak + Mouse Memoirs (latin, latin-ext)
   img/                декор и hero
   img/menu/           76 фотографий блюд
   video/loader.mp4    заставка
 ```
 
-## Запуск локально
+## Пересобрать сайт с нуля
 
-```bash
-python3 -m http.server 8124
-```
-
-Открывать через `http://localhost:8124/`, а не через `file://` —
-иначе не работают абсолютные ссылки вида `/menu/`.
+В [`PROMPT.md`](PROMPT.md) лежит единый промпт: его можно целиком вставить
+в Claude Code / Cursor, и сайт соберётся заново — со скачиванием всех ассетов
+и полным исходным кодом. Там же спецификация дизайна, чек-лист проверки
+и инструкция по деплою.
 
 ## Деплой
 
@@ -44,11 +63,4 @@ python3 -m http.server 8124
 npx vercel deploy --prod --yes
 ```
 
-Сборка не нужна — это статика, подойдёт любой хостинг
-(Vercel, Netlify, GitHub Pages, Cloudflare Pages).
-
-## Пересоздать сайт с нуля
-
-В файле [`TORRO-BURGER-PROMPT.md`](TORRO-BURGER-PROMPT.md) лежит единый промпт:
-его можно целиком вставить в Claude Code, и сайт соберётся заново — со скачиванием
-всех ассетов и полным исходным кодом.
+Или Netlify / GitHub Pages / Cloudflare Pages — сборка не требуется.
