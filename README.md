@@ -13,7 +13,7 @@
 Нужен только `git` и `python3` (он есть на macOS и Linux из коробки):
 
 ```bash
-git clone https://github.com/ВАШ_ЛОГИН/torro-burger.git
+git clone https://github.com/p4sh6ysbfn-svg/torro-burger.git
 cd torro-burger
 python3 -m http.server 5173
 ```
