@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TORRO BURGER | Burgers Menu</title>
+<meta name="description" content="TORRO BURGER menu — our finest picks.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+<link rel="preload" href="../assets/fonts/modak-EJRYQgs1XtIEskMA-hR77LKV.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/mousememoirs-t5tmIRoSNJ-PH0WNNgDYxdSb3T7Pr7GEch8.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="curtain"><span>Craving...</span></div>
+
+<nav class="nav">
+  <a class="logo" href="/">TORRO</a>
+  <div class="right">
+    <a class="pill" href="/menu/"><span class="roll"><b>Burgers</b><i>Burgers</i></span></a>
+    <div class="menu-wrap">
+      <button class="menu-btn" aria-label="Open menu">
+        <span class="roll"><b>Menu</b><i>Menu</i></span>
+        <span class="burger-icon"><span></span><span></span><span></span></span>
+      </button>
+      <div class="dropdown">
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/spices/">Our Spices</a>
+        <a href="/#locations">Locations</a>
+        <a href="/contact/">Contact</a>
+        <p class="est">Chișinău, Moldova</p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <p class="kicker fade-up">The best</p>
+  <h1 class="reveal" data-split>Eat like you mean it</h1>
+  <p class="text40 fade-up" style="margin-top:2vw">Our Finest Burger Picks — 6 items</p>
+</section>
+
+<section>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section class="cta" style="padding-top:6vw">
+  <div class="tear tear-top"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 46 L0 18 L48 30 L96 8 L150 26 L210 6 L264 28 L318 10 L372 30 L430 8 L484 24 L540 4 L600 26 L654 10 L708 30 L760 6 L820 24 L874 8 L930 28 L985 10 L1040 30 L1095 6 L1150 26 L1205 8 L1260 28 L1315 10 L1370 26 L1440 12 L1440 46 Z" fill="#ffd750" transform="scale(1,-1) translate(0,-46)"/></svg></div>
+  <div class="wrap" style="min-height:60svh">
+    <div class="txt">
+      <p class="kicker fade-up">FEEL IT</p>
+      <h2 class="reveal" data-split>feel the Change</h2>
+      <p class="lede fade-up">Smashed for the bold, built for the hungry — every crispy edge and juicy layer made to rule your cravings.</p>
+      <a class="btn-blob" href="/#menu"><span class="bg"></span><span class="lb">Order Now</span></a>
+    </div>
+    <div class="photo"><img src="../assets/img/cta.webp" alt="Premium smashed burger on a wooden board"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="top">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/menu/">Burgers</a>
+      <a href="/spices/">Spices</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <p class="copy">© 2026 TORRO BURGER — All rights reserved</p>
+  </div>
+  <div class="rule"></div>
+  <p class="tag">Smashed patties · toasted buns · est. 1997</p>
+  <div class="big-wrap">
+    <div class="veg veg1"><img src="../assets/img/lettuce.webp" alt=""></div>
+    <div class="veg veg2"><img src="../assets/img/tomato.webp" alt=""></div>
+    <div class="veg veg3"><img src="../assets/img/cheese-logo.webp" alt=""></div>
+    <div class="veg veg4"><img src="../assets/img/meat.webp" alt=""></div>
+    <h2 class="big">TORRO</h2>
+  </div>
+  <div class="m-only">
+    <div class="rule2"></div>
+    <p>Smashed patties · toasted buns · est. 1997<br>© 2026 TORRO BURGER — All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var BURGERS = [
+    { n: 'torro burger', w: '350 gr', p: 119, patty: 'Beef' },
+    { n: 'blue cherry', w: '380 gr', p: 99, patty: 'Beef', badge: 'NEW' },
+    { n: 'smash burger', w: '300 gr', p: 99, patty: 'Beef', badge: 'NEW' },
+    { n: 'el gran matador burger', w: '420 gr', p: 124, patty: 'Beef' },
+    { n: 'classic cheeseburger', w: '330 gr', p: 89, patty: 'Beef' },
+    { n: 'crispy chicken burger', w: '330 gr', p: 89, patty: 'Chicken' }
+  ];
+  function slug(n) {
+    return n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  var host = document.getElementById('cards');
+  host.innerHTML = BURGERS.map(function (b, i) {
+    var badge = b.badge ? '<span class="spec" style="background:var(--mustard)">' + b.badge + '</span>' : '';
+    return '<div class="card-b fade-up">' +
+      '<div class="img"><img loading="lazy" src="../assets/img/menu/' + slug(b.n) + '.webp" alt="' + b.n + '"></div>' +
+      '<div class="body">' +
+        '<div class="specs">' + badge + '<span class="spec">' + b.w + '</span><span class="spec">Patty \u00b7 ' + b.patty + '</span><span class="spec">Smashed fresh</span></div>' +
+        '<h3>' + b.n + '</h3>' +
+        '<div class="row"><span class="price">' + b.p + ' mdl</span><button class="add" data-i="' + i + '">Add to cart</button></div>' +
+      '</div></div>';
+  }).join('');
+
+  host.addEventListener('click', function (e) {
+    var btn = e.target.closest('.add');
+    if (!btn) return;
+    var b = BURGERS[+btn.dataset.i];
+    if (window.TorroCart) TorroCart.add(b.n, b.p);
+    btn.classList.add('done'); btn.textContent = 'Added!';
+    setTimeout(function () { btn.classList.remove('done'); btn.textContent = 'Add to cart'; }, 1200);
+  });
+})();
+</script>
+<script src="../assets/js/lenis.min.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
